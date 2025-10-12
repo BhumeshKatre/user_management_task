@@ -1,7 +1,30 @@
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { apiUrl } from "../Data";
+import axios from "axios";
 
-export const successAlert = () => Swal.fire({
-  title: "New Customer Added",
-  icon: "success",
-  draggable: true
-});
+export const successAlert = () =>
+  Swal.fire({
+    title: "New Customer Added",
+    icon: "success",
+    draggable: true,
+  });
+
+export const deleteAlert = (getTableData, id) =>
+  Swal.fire({
+    title: "Are you sure?",
+    text: `Delete Customer with Id :${id}`,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+       axios.delete(`${apiUrl}/${id}`).then(() => getTableData()).catch((err) => console.log(err))
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your task has been deleted.",
+        icon: "success",
+      });
+    }
+  });

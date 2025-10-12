@@ -3,34 +3,38 @@ import { IoIosContacts } from "react-icons/io";
 import { GoAlert } from "react-icons/go";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { LuClockAlert } from "react-icons/lu";
+import { data } from "react-router-dom";
+import { useAuth } from "../../Context/AuthProvider";
 
 
 
-const cards = [
-  {
-    text: "Total Customers",
-    value: 8,
-    icon: (
-      <IoIosContacts className="text-3xl p-1 bg-gray-200 text-sky-400 rounded-full" />
-    ),
-  },
-  {
-    text: "Expired Insurance",
-    value: 8,
-    icon:  < GoAlert className = "text-3xl p-1 bg-gray-200 text-red-400 rounded-full" />
-  },
-  {
-    text: "Expired PUC",
-    value: 8,
-    icon: < LuClockAlert className="text-3xl p-1 bg-gray-200 text-red-400 rounded-full" />
-  },
-  {
-    text: "Reminder Send Today",
-    value: 8,
-    icon: < IoIosNotificationsOutline className="text-3xl p-1 bg-gray-200 text-green-400 rounded-full" />
-  },
-];
+
 const Dashboard = () => {
+  const { data } = useAuth()
+  const cards = [
+    {
+      text: "Total Customers",
+      value: data.length,
+      icon: (
+        <IoIosContacts className="text-3xl p-1 bg-gray-200 text-sky-400 rounded-full" />
+      ),
+    },
+    {
+      text: "Expired Insurance",
+      value: 0,
+      icon: < GoAlert className="text-3xl p-1 bg-gray-200 text-red-400 rounded-full" />
+    },
+    {
+      text: "Expired PUC",
+      value: 0,
+      icon: < LuClockAlert className="text-3xl p-1 bg-gray-200 text-red-400 rounded-full" />
+    },
+    {
+      text: "Reminder Send Today",
+      value: 0,
+      icon: < IoIosNotificationsOutline className="text-3xl p-1 bg-gray-200 text-green-400 rounded-full" />
+    },
+  ];
   return (
     <div className="p-2 px-5">
       <h1 className="text-xl font-bold p-3">Dashboard Overview</h1>
