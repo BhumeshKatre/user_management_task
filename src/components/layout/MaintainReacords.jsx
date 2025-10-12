@@ -3,15 +3,12 @@ import { CiSearch } from "react-icons/ci";
 import Table from "../UI/Table";
 import FormModal from "../UI/formModal";
 import { FaPlus } from "react-icons/fa6";
+import { useAuth } from "../../Context/AuthProvider";
 
 
 const MaintainReacords = () => {
-  const [toggal, setToggal] = useState(false);
-  const handleFormPop = () => {
-    localStorage.clear();
-    setToggal(!toggal);
-    // console.log(toggal);
-  };
+  const {toggal , handleFormPop }= useAuth();
+  
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold p-3">Customers Records</h1>
@@ -39,7 +36,7 @@ const MaintainReacords = () => {
         <Table handleFormPop={handleFormPop} />
       </div>
 
-      {toggal && <FormModal toggal={toggal} handleFormPop={handleFormPop} />}
+      {toggal && <FormModal toggal={toggal} handleFormPop={handleFormPop} />  }
     </div>
   );
 };
