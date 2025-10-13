@@ -21,17 +21,17 @@ const Table = ({ handleFormPop }) => {
   };
 
   return (
-    <div className="overflow-x-auto rounded-md  border border-blue-400">
+    <div className="overflow-x-auto rounded-md  border border-gray-100">
       {data && data.length > 0 ? (
         <>
           <table className=" md:min-w-full   rounded-2xl ">
-            <thead className=" rounded-2xl bg-sky-200">
-              <tr className="">
-                <th className="p-2">Name</th>
-                <th className="p-2">Phone</th>
-                <th className="p-2">Vehicle</th>
-                <th className="p-2">Ins.Exp.Date</th>
-                <th className="p-2">PUC.exp.Date</th>
+            <thead className=" rounded-2xl bg-sky-400">
+              <tr className="text-gray-100">
+                <th className="p-2 border-r border-gray-100">Name</th>
+                <th className="p-2 border-r border-gray-100">Phone</th>
+                <th className="p-2 border-r border-gray-100">Vehicle</th>
+                <th className="p-2 border-r border-gray-100">Ins.Exp.Date</th>
+                <th className="p-2 border-r border-gray-100">PUC.exp.Date</th>
                 <th className="p-2">Action</th>
               </tr>
             </thead>
@@ -41,11 +41,11 @@ const Table = ({ handleFormPop }) => {
                   key={i}
                   className="border-t border-gray-200 hover:bg-sky-50  odd:bg-white even:bg-gray-100 "
                 >
-                  <td className="py-2 px-2 ">{item.name}</td>
-                  <td className="p-2 "> {item.phone}</td>
-                  <td className="p-2 ">{item.vehicle}</td>
-                  <td className="p-2 text-center">{item.incExpDate}</td>
-                  <td className="p-2 text-center">{item.pucExpDate}</td>
+                  <td className="py-2 px-2 border-r border-gray-300">{item.name}</td>
+                  <td className="p-2 border-r border-gray-300"> {item.phone}</td>
+                  <td className="p-2 border-r border-gray-300">{item.vehicle}</td>
+                  <td className="p-2 text-center border-r border-gray-300">{item.incExpDate}</td>
+                  <td className="p-2 text-center border-r border-gray-300">{item.pucExpDate}</td>
                   <td className="flex items-center py-2 px-2  justify-center gap-4 ">
                     <button
                       className="text-2xl hover:bg-sky-200 p-1 rounded-2xl text-blue-500"

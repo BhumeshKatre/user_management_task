@@ -4,11 +4,15 @@ import Table from "../UI/Table";
 import FormModal from "../UI/formModal";
 import { FaPlus } from "react-icons/fa6";
 import { useAuth } from "../../Context/AuthProvider";
+import Loader from "../UI/Loader";
 
 
 const MaintainReacords = () => {
-  const {toggal , handleFormPop }= useAuth();
+  const {toggal , handleFormPop , loading  }= useAuth();
   
+  if (loading) {
+   return <Loader />
+  }
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold p-3">Customers Records</h1>

@@ -1,24 +1,30 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { deleteAlert } from "../components/Alert";
+import { apiUrl } from "../Data";
 
 const MyContext = createContext();
 const AuthProvider = ({ children }) => {
-  const apiUrl =
-    "https://68d8056a2144ea3f6da72875.mockapi.io/user_management_puc";
   const [data, setData] = useState([]);
   const [editData, setEditData] = useState([]);
+  const [loading, SetLoading] = useState(false);
   const [toggal, setToggal] = useState(false);
   const date = new Date();
   const today = date.toLocaleDateString("en-Gb");
   // console.log(today);
 
-  const getTableData = () => {
+  const getTableData = async () => {
     setEditData(null);
-    axios
-      .get(apiUrl)
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
+    SetLoading(true)
+    try {
+      const res = await axios.get(apiUrl)
+      setData(res.data)
+    } catch (error) {
+      console.log(error);
+      SetLoading(false)
+    }finally {
+      SetLoading(false)
+    }    
   };
 
   const handleFormPop = () => {
@@ -44,7 +50,7 @@ const AuthProvider = ({ children }) => {
   }, [data]);
 
   // console.log(data);
-
+  // console.log(loading);
   return (
     <MyContext.Provider
       value={{
@@ -56,6 +62,7 @@ const AuthProvider = ({ children }) => {
         handleEdit,
         handleFormPop,
         today,
+        loading
       }}
     >
       {children}

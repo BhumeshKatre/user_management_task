@@ -140,7 +140,7 @@ const FormModal = ({ toggal, handleFormPop }) => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2 bg-sky-600 text-white mt-3"
+                  className="w-full py-2 hover:bg-sky-700 bg-sky-400 text-white mt-3"
                 >
                   Save
                 </button>
