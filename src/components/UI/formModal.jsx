@@ -5,11 +5,13 @@ import { IoCloseOutline } from "react-icons/io5";
 import { apiUrl } from "../../Data";
 import { successAlert } from "../Alert";
 import { ToastContainer, toast } from 'react-toastify';
+import { useAuth } from "../../Context/AuthProvider";
 
 const FormModal = ({ toggal, handleFormPop }) => {
+ const {editData} = useAuth()
   const data = localStorage.getItem("data");
   // console.log(data);
-  const getData = JSON.parse(data);
+  const getData = editData;
   // console.log(getData);
 
   return (
@@ -72,6 +74,7 @@ const FormModal = ({ toggal, handleFormPop }) => {
                 <div className="flex flex-col gap-1 mb-2">
                   <label htmlFor="name">Name</label>
                   <input
+                    required
                     onChange={props.handleChange}
                     value={name || props.values.name}
                     placeholder="nitish kumar"
@@ -85,6 +88,7 @@ const FormModal = ({ toggal, handleFormPop }) => {
                 <div className="flex flex-col gap-1 mb-2">
                   <label htmlFor="phone">Phone</label>
                   <input
+                    required
                     onChange={props.handleChange}
                     value={props.values.phone}
                     className="border p-1 border-gray-400 rounded-md outline-sky-300"
@@ -97,6 +101,7 @@ const FormModal = ({ toggal, handleFormPop }) => {
                 <div className="flex flex-col gap-1 mb-2">
                   <label htmlFor="phone">Vehicle</label>
                   <input
+                    required
                     value={props.values.vehicle}
                     onChange={props.handleChange}
                     className="border p-1 border-gray-400 rounded-md outline-sky-300"
@@ -110,6 +115,7 @@ const FormModal = ({ toggal, handleFormPop }) => {
                   <div className="flex flex-col gap-1 mb-2">
                     <label htmlFor="incExpDate">Inc. exp. Date</label>
                     <input
+                      required
                       onChange={props.handleChange}
                       value={props.values.incExpDate}
                       className="border p-1 border-gray-400 rounded-md outline-sky-300"
@@ -122,6 +128,7 @@ const FormModal = ({ toggal, handleFormPop }) => {
                   <div className="flex flex-col gap-1 mb-2">
                     <label htmlFor="pucExpDate">PUC exp. Date</label>
                     <input
+                      required
                       onChange={props.handleChange}
                       value={props.values.pucExpDate}
                       className="border p-1 border-gray-400 rounded-md outline-sky-300"

@@ -5,10 +5,20 @@ import { CiEdit } from "react-icons/ci";
 import { LuSendHorizontal } from "react-icons/lu";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthProvider";
+import { redirect, useNavigate } from "react-router-dom";
 
 const Table = ({ handleFormPop }) => {
-  const {  data , handleDel , handleEdit , today} = useAuth();
+  const { data, handleDel, handleEdit, today } = useAuth();
+  const navigate = useNavigate();
   // console.log(data);
+
+  // data.map((item)=>console.log(item.incExpDate > today))
+
+  const sendReminder = (phone) => {
+    const msg = "Your insurance expired";
+    const url = `https://wa.me/91${phone}/?text=${msg}`;
+    window.location.href = url;
+  };
 
   return (
     <div className="overflow-x-auto rounded-md  border border-blue-400">
@@ -32,13 +42,10 @@ const Table = ({ handleFormPop }) => {
                   className="border-t border-gray-200 hover:bg-sky-50  odd:bg-white even:bg-gray-100 "
                 >
                   <td className="py-2 px-2 ">{item.name}</td>
-                  <td className="p-2"> {item.phone}</td>
-                  <td className="p-2">{item.vehicle}
-                  </td>
-                  <td className="p-2">{item.incExpDate}
-                    <span>{today > item.incExpDate ? 'expired' : ''}</span>
-                  </td>
-                  <td className="p-2">{item.pucExpDate}</td>
+                  <td className="p-2 "> {item.phone}</td>
+                  <td className="p-2 ">{item.vehicle}</td>
+                  <td className="p-2 text-center">{item.incExpDate}</td>
+                  <td className="p-2 text-center">{item.pucExpDate}</td>
                   <td className="flex items-center py-2 px-2  justify-center gap-4 ">
                     <button
                       className="text-2xl hover:bg-sky-200 p-1 rounded-2xl text-blue-500"
@@ -53,8 +60,10 @@ const Table = ({ handleFormPop }) => {
                       <AiOutlineDelete />
                     </button>
                     <button
-                    disabled
-                      className="text-2xl hover:bg-green-200 p-1 rounded-2xl text-green-600 disabled:text-gray-300">
+                      onClick={() => sendReminder(item.phone)}
+                      disabled
+                      className="text-2xl hover:bg-green-200 p-1 rounded-2xl text-green-600 disabled:text-gray-300"
+                    >
                       <LuSendHorizontal />
                     </button>
                   </td>
