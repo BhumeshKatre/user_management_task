@@ -4,11 +4,15 @@ import Table from "../UI/Table";
 import FormModal from "../UI/formModal";
 import { FaPlus } from "react-icons/fa6";
 import { useAuth } from "../../Context/AuthProvider";
+import Loader from "../UI/Loader";
 
 
 const MaintainReacords = () => {
-  const {toggal , handleFormPop }= useAuth();
-  
+  const { toggal, handleFormPop, loading , data } = useAuth();
+  const [searchQuery, setSearchQuery] = useState();
+ 
+  // const searchedData = data.filter((item) => )
+  // console.log(searchedData);
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold p-3">Customers Records</h1>
@@ -16,6 +20,7 @@ const MaintainReacords = () => {
         <div className="flex gap-2 border-1 border-gray-400 bg-gray-100 items-center md:justify-center px-3 rounded-xl md:w-80">
           <CiSearch />
           <input
+            onChange={(e)=>setSearchQuery(e.target.value)}
             className="py-2 outline-none text-sm md:w-60 w-100 "
             type="text"
             placeholder="search by name , phone or vehicle.."
