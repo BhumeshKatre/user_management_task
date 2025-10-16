@@ -3,11 +3,7 @@ import { IoIosContacts } from "react-icons/io";
 import { GoAlert } from "react-icons/go";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { LuClockAlert } from "react-icons/lu";
-import { data } from "react-router-dom";
 import { useAuth } from "../../Context/AuthProvider";
-
-
-
 
 const Dashboard = () => {
   const { data } = useAuth()
@@ -38,7 +34,7 @@ const Dashboard = () => {
   return (
     <div className="p-2 px-5">
       <h1 className="text-xl font-bold p-3">Dashboard Overview</h1>
-      <div className="grid md:grid-cols-4  gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4  gap-4">
         {cards.map((card, i) => (
           <div
             key={i}

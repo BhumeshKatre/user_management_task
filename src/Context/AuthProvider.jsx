@@ -6,51 +6,54 @@ import { apiUrl } from "../Data";
 const MyContext = createContext();
 const AuthProvider = ({ children }) => {
   const [data, setData] = useState([]);
-  const [editData, setEditData] = useState([]);
-  const [loading, SetLoading] = useState(false);
+  const [editData, setEditData] = useState();
+  const [loading, SetLoading] = useState(true);
   const [toggal, setToggal] = useState(false);
   const date = new Date();
-  const today = date.toLocaleDateString("en-Gb");
   // console.log(today);
 
   const getTableData = async () => {
     setEditData(null);
-    SetLoading(true)
+    SetLoading(true);
     try {
-      const res = await axios.get(apiUrl)
-      setData(res.data)
+      const res = await axios.get(apiUrl);
+      setData(res.data);
     } catch (error) {
       console.log(error);
-      SetLoading(false)
-    }finally {
-      SetLoading(false)
-    }    
+      SetLoading(false);
+    } finally {
+      SetLoading(false);
+    }
   };
 
   const handleFormPop = () => {
     // localStorage.removeItem('data');
     setToggal(!toggal);
+    return
     // console.log(toggal);
   };
 
   const handleDel = (id) => {
-    deleteAlert(getTableData, id);
+    return deleteAlert(getTableData, id);
   };
 
-  const handleEdit = (item) => {
-    setEditData(item);
-    localStorage.setItem("data", JSON.stringify(data));
+  const handleEdit = (id) => {
+    const userData = data.find((i) => i.id === id);
+    // console.log(userData);
+    setEditData(userData);
     handleFormPop();
-    console.log(editData);
+    return;
     // console.log("clicked");
   };
 
-  useEffect(() => {
-    getTableData();
-  }, [data]);
-
   // console.log(data);
   // console.log(loading);
+
+  useEffect(() => {
+    getTableData();
+    setEditData();
+  }, []);
+
   return (
     <MyContext.Provider
       value={{
@@ -61,8 +64,9 @@ const AuthProvider = ({ children }) => {
         editData,
         handleEdit,
         handleFormPop,
-        today,
-        loading
+        loading,
+        getTableData,
+        date
       }}
     >
       {children}

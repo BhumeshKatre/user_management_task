@@ -2,9 +2,9 @@ import Swal from "sweetalert2";
 import { apiUrl } from "../Data";
 import axios from "axios";
 
-export const successAlert = () =>
+export const successAlert = (text) =>
   Swal.fire({
-    title: "New Customer Added",
+    title: text,
     icon: "success",
     draggable: true,
   });
