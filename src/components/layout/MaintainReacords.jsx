@@ -20,7 +20,7 @@ const MaintainReacords = () => {
         <div className="flex gap-2 border-1 border-gray-400 bg-gray-100 items-center md:justify-center px-3 rounded-xl md:w-80">
           <CiSearch />
           <input
-            onChange={(e)=>setSearchQuery(e.target.value)}
+            // onChange={(e)=>setSearchQuery(e.target.value)}
             className="py-2 outline-none text-sm md:w-60 w-100 "
             type="text"
             placeholder="search by name , phone or vehicle.."
