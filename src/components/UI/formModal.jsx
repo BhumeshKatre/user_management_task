@@ -113,7 +113,7 @@ const FormModal = () => {
               <input
                 value={values.vehicle}
                 onChange={handleChange}
-                className="border p-1 border-gray-400 rounded-md outline-sky-300"
+                className="border p-1 border-gray-400 rounded-md outline-sky-300 uppercase"
                 type="text"
                 placeholder="MH35AC3434"
                 name="vehicle"

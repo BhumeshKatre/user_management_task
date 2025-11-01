@@ -46,7 +46,7 @@ const Table = () => {
             </thead>
             <tbody>
               {data?.map((item, i) => (
-                                
+                             
                 <tr
                   key={i}
                   className="border-t border-gray-200 hover:bg-sky-50  odd:bg-white even:bg-gray-10 "
