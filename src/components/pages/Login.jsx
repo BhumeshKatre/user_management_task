@@ -24,18 +24,23 @@ const Login = () => {
     setLoading(true);
 
     try {
+     
       const res = await axios.post(`${apiUrl}/api/auth/login`, form);
+
+      console.log(`${apiUrl}/api/auth/login`);
 
       // ✅ Login success
       const token = res.data.token;
-      console.log(token);
       localStorage.setItem("token", token);
 
       // 👉 Redirect to dashboard
       navigate("/dashboard");
+
     } catch (err) {
       // ❌ Login failed
-      setError(err.response?.data?.message || "Invalid email or password");
+      setError(
+        err.response?.data?.message || "Invalid email or password"
+      );
     } finally {
       setLoading(false);
     }
@@ -44,6 +49,7 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <h1 className="text-3xl font-bold text-sky-600">PUC</h1>
@@ -58,7 +64,9 @@ const Login = () => {
 
         {/* Error */}
         {error && (
-          <p className="text-red-500 text-sm text-center mb-3">{error}</p>
+          <p className="text-red-500 text-sm text-center mb-3">
+            {error}
+          </p>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
