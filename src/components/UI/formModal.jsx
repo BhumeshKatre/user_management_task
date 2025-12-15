@@ -50,7 +50,7 @@ const FormModal = () => {
                 successAlert(msg);
               })
             .catch((err) =>
-              warningAlert(err.response.data.message)
+              warningAlert(err.response.data?.message)
           )
         actions.setSubmitting(false);
         handleFormPop();

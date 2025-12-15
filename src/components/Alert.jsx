@@ -33,6 +33,6 @@ export const deleteAlert = (getTableData, id) =>
     Swal.fire({
       icon: "warning",
       title: "Already Registered",
-      text: "This vehicle is already registered with another user.",
+      text: text,
       footer: "Please check the vehicle number",
     });
