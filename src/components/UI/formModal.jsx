@@ -23,7 +23,7 @@ const FormModal = () => {
       onSubmit: async (values, actions) => {
         editData
           ? await axios
-              .put(`${apiUrl}/${editData?.id}`, {
+            .put(`${apiUrl}/api/users/${editData?._id}`, {
                 name: values.name,
                 phone: values.phone,
                 vehicle: values.vehicle,
@@ -37,7 +37,7 @@ const FormModal = () => {
               })
               .catch((err) => console.log(err))
           : await axios
-              .post(apiUrl, {
+              .post(`${apiUrl}/api/users`, {
                 name: values.name,
                 phone: values.phone,
                 vehicle: values.vehicle,

@@ -20,7 +20,7 @@ export const deleteAlert = (getTableData, id) =>
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
     if (result.isConfirmed) {
-       axios.delete(`${apiUrl}/${id}`).then(() => getTableData()).catch((err) => console.log(err))
+      axios.delete(`${apiUrl}/api/users/${id}`).then(() => getTableData()).catch((err) => console.log(err))
       Swal.fire({
         title: "Deleted!",
         text: "Your task has been deleted.",
