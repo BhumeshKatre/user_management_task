@@ -28,3 +28,11 @@ export const deleteAlert = (getTableData, id) =>
       });
     }
   });
+
+  export const warningAlert = (text) =>
+    Swal.fire({
+      icon: "warning",
+      title: "Already Registered",
+      text: "This vehicle is already registered with another user.",
+      footer: "Please check the vehicle number",
+    });

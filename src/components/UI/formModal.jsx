@@ -2,7 +2,7 @@ import axios from "axios";
 import {  useFormik } from "formik";
 import { IoCloseOutline } from "react-icons/io5";
 import { apiUrl } from "../../Data";
-import { successAlert } from "../Alert";
+import { successAlert, warningAlert } from "../Alert";
 import { useAuth } from "../../Context/AuthProvider";
 import { FormSchema } from "../../FormValidation";
 
@@ -49,7 +49,9 @@ const FormModal = () => {
                 getTableData();
                 successAlert(msg);
               })
-              .catch((err) => console.log(err));
+            .catch((err) =>
+              warningAlert(err.response.data.message)
+          )
         actions.setSubmitting(false);
         handleFormPop();
       },
