@@ -49,7 +49,7 @@ const Table = () => {
                              
                 <tr
                   key={i}
-                  className="border-t border-gray-200 hover:bg-sky-50  odd:bg-white even:bg-gray-10 "
+                  className="border-t border-gray-200 hover:bg-sky-50  odd:bg-white even:bg-gray-100 "
                 >
                   <td className="py-2 px-2 border-r border-gray-300">
                     {item.name}
@@ -61,7 +61,7 @@ const Table = () => {
                   <td className="p-2 border-r border-gray-300 uppercase">
                     {item.vehicle}
                   </td>
-                  <td className="p-2 text-center border-r border-gray-300 flex flex-col relative">
+                  <td className="p-2 text-center border-r border-gray-300 ">
                     {item.incExpDate}
                     {/* <span className="absolute top-0 right-12 text-sm p-0 text-red-500">{new Date(item.incExpDate) < date ? 'expired' : null} </span> */}
                   </td>
@@ -71,13 +71,13 @@ const Table = () => {
                   <td className="flex items-center py-2 px-2  justify-center gap-4 ">
                     <button
                       className="text-2xl hover:bg-sky-200 p-1 rounded-2xl text-blue-500"
-                      onClick={() => handleEdit(item.id)}
+                      onClick={() => handleEdit(item._id)}
                     >
                       <CiEdit />
                     </button>
                     <button
                       className="text-2xl hover:bg-red-200 p-1 rounded-2xl text-red-600"
-                      onClick={() => handleDel(item.id)}
+                      onClick={() => handleDel(item._id)}
                     >
                       <AiOutlineDelete />
                     </button>
