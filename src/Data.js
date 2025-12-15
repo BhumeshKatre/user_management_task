@@ -1,6 +1,6 @@
 
 
-export const apiUrl = 'http://localhost:5000/api/users'
+export const apiUrl = 'https://user-management-task-backend.onrender.com/api/users'
 
 
 
