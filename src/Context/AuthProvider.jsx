@@ -10,6 +10,8 @@ const AuthProvider = ({ children }) => {
   const [loading, SetLoading] = useState(true);
   const [toggal, setToggal] = useState(false);
   const date = new Date();
+  // const apiUrl = import.meta.env.apiUrl;
+  // console.log(apiUrl);
   // console.log(today);
 
   const getTableData = async () => {
@@ -38,8 +40,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const handleEdit = (id) => {
-    const userData = data.find((i) => i.id === id);
-    // console.log(userData);
+    const userData = data.find((i) => i._id === id);
     setEditData(userData);
     handleFormPop();
     return;
@@ -52,6 +53,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     getTableData();
     setEditData();
+    // console.log(data);
   }, []);
 
   return (
