@@ -62,11 +62,11 @@ const Table = () => {
                     {item.vehicle}
                   </td>
                   <td className="p-2 text-center border-r border-gray-300 ">
-                    {item.incExpDate}
+                    {item.incExpDate.split("T")[0]}
                     {/* <span className="absolute top-0 right-12 text-sm p-0 text-red-500">{new Date(item.incExpDate) < date ? 'expired' : null} </span> */}
                   </td>
                   <td className="p-2 text-center border-r border-gray-300">
-                    {item.pucExpDate}
+                    {item.pucExpDate.split("T")[0]}
                   </td>
                   <td className="flex items-center py-2 px-2  justify-center gap-4 ">
                     <button
