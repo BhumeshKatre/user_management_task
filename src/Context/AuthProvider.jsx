@@ -13,7 +13,6 @@ const AuthProvider = ({ children }) => {
   // const apiUrl = import.meta.env.apiUrl;
   console.log(apiUrl);
   // console.log(today);
-
   const getTableData = async () => {
     setEditData(null);
     SetLoading(true);
@@ -37,6 +36,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const handleDel = (id) => {
+    console.log(`${apiUrl}/api/users/${id}`);
     return deleteAlert(getTableData, id);
   };
 
