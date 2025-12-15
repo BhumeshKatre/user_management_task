@@ -11,14 +11,15 @@ const AuthProvider = ({ children }) => {
   const [toggal, setToggal] = useState(false);
   const date = new Date();
   // const apiUrl = import.meta.env.apiUrl;
-  // console.log(apiUrl);
+  console.log(apiUrl);
   // console.log(today);
 
   const getTableData = async () => {
     setEditData(null);
     SetLoading(true);
     try {
-      const res = await axios.get(apiUrl);
+      const res = await axios.get(`${apiUrl}/api/users`);
+      console.log(res.data);
       setData(res.data);
     } catch (error) {
       console.log(error);
